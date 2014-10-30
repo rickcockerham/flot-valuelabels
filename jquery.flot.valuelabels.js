@@ -36,7 +36,6 @@
             plotAxis: 'y', // Set to the axis values you wish to plot
             hideZero: false,
             hideSame: false // Hide consecutive labels of the same value
-
          }
       }
    };
@@ -139,8 +138,7 @@
                if (categories)
                {
                   x = series.xaxis.categories[x];
-               }
-               if (x < series.xaxis.min || x > series.xaxis.max || y < series.yaxis.min || y > series.yaxis.max) continue;
+               }               if (x < series.xaxis.min || x > series.xaxis.max || y < series.yaxis.min || y > series.yaxis.max) continue;
                var val = (plotAxis === 'x')? x: y;
                if(val == null)
                {
@@ -224,8 +222,9 @@
                      }
                      else
                      {
-			xx = xx + xoffset;
-			yy = yy + 6 + yoffset;
+                        //allow same offsets for html rendering
+                        xx = xx + xoffset;
+                        yy = yy + 6 + yoffset;
 
                         var head = '<div style="left:' + xx + 'px;top:' + yy + 'px;" class="valueLabel';
                         var tail = '">' + val + '</div>';
