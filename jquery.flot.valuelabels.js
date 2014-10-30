@@ -104,21 +104,6 @@
                if (series.data[i] === null) continue;
                var x = series.data[i][0], y = series.data[i][1];
 
-		if(valign == 'bottom') {
-		    y = 0;
-		} else if(valign == 'middle') {
-		    y = y / 2;
-		}
-
-		// add up y axis for stacked series
-		var addstack = 0;
-                if(stackedbar) {
-		    if(!stacked[x]) stacked[x] = 0.0;
-		    addstack = stacked[x];
-		    stacked[x] = stacked[x] + series.data[i][1];
-                    hideZero = 1;  //they will overlap now.
-		}
-
                if (notShowAll)
                {
                   var doWork = false;
@@ -175,8 +160,25 @@
                }
                if (!hideSame || val != last_val || i == series.data.length - 1)
                {
+
+		   ploty = y;
+		   if(valign == 'bottom') {
+		       ploty = 0;
+		   } else if(valign == 'middle') {
+		       ploty = ploty / 2;
+		   }
+
+		   // add up y axis for stacked series
+		   var addstack = 0;
+                   if(stackedbar) {
+		       if(!stacked[x]) stacked[x] = 0.0;
+		       addstack = stacked[x];
+		       stacked[x] = stacked[x] + y;
+                       hideZero = 1;  //they will overlap now.
+		   }
+
                   var xx = series.xaxis.p2c(x) + plot.getPlotOffset().left;
-                  var yy = series.yaxis.p2c(y + addstack) - 12 + plot.getPlotOffset().top;
+                  var yy = series.yaxis.p2c(ploty + addstack) - 12 + plot.getPlotOffset().top;
                   if (!hideSame || Math.abs(yy - last_y) > 20 || last_x < xx)
                   {
                      last_val = val;
