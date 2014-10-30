@@ -17,27 +17,27 @@
 {
    var options =
    {
-       series:
-       {
-	   valueLabels:
-	   {
-	       show: false,
-	       showMaxValue: false,
-	       showMinValue: false,
-	       showAsHtml: false, // Set to true if you wanna switch back to DIV usage (you need plot.css for this)
-	       showLastValue: false, // Use this to show the label only for the last value in the series
-	       labelFormatter: function(v)
-	       {
-		   return v;
-	       }, // Format the label value to what you want
-	       align: 'center', // can also be 'center', 'left' or 'right'
-	       valign: 'top', // can also be 'middle', 'top' or 'bottom'
-	       useDecimalComma: false,
-	       plotAxis: 'y', // Set to the axis values you wish to plot
-	       hideZero: false,
-	       hideSame: false // Hide consecutive labels of the same value
-	   }
-       }
+      series:
+      {
+	 valueLabels:
+	 {
+	     show: false,
+	     showMaxValue: false,
+	     showMinValue: false,
+	     showAsHtml: false, // Set to true if you wanna switch back to DIV usage (you need plot.css for this)
+	     showLastValue: false, // Use this to show the label only for the last value in the series
+	     labelFormatter: function(v)
+	     {
+		 return v;
+	     }, // Format the label value to what you want
+	     align: 'center', // can also be 'center', 'left' or 'right'
+	     valign: 'top', // can also be 'middle', 'top' or 'bottom'
+	     useDecimalComma: false,
+	     plotAxis: 'y', // Set to the axis values you wish to plot
+	     hideZero: false,
+	     hideSame: false // Hide consecutive labels of the same value
+	 }
+      }
    };
 
    function init(plot)
@@ -145,7 +145,7 @@
                {
                   val = ''
                }
-               if (val === 0 && hideZero) continue;
+               if (val === 0 && (hideZero || stackedbar)) continue;
                if (series.valueLabels.valueLabelFunc)
                {
                   val = series.valueLabels.valueLabelFunc(
@@ -175,7 +175,6 @@
 		       if(!stacked[x]) stacked[x] = 0.0;
 		       addstack = stacked[x];
 		       stacked[x] = stacked[x] + y;
-                       hideZero = 1;  //they will overlap now.
 		   }
 
                   var xx = series.xaxis.p2c(x) + plot.getPlotOffset().left;
