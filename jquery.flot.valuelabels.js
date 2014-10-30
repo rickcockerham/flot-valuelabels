@@ -16,29 +16,29 @@
 (function ($)
 {
    var options =
+   {
+       series:
        {
-	   series:
+	   valueLabels:
 	   {
-	       valueLabels:
+	       show: false,
+	       showMaxValue: false,
+	       showMinValue: false,
+	       showAsHtml: false, // Set to true if you wanna switch back to DIV usage (you need plot.css for this)
+	       showLastValue: false, // Use this to show the label only for the last value in the series
+	       labelFormatter: function(v)
 	       {
-		   show: false,
-		   showMaxValue: false,
-		   showMinValue: false,
-		   showAsHtml: false, // Set to true if you wanna switch back to DIV usage (you need plot.css for this)
-		   showLastValue: false, // Use this to show the label only for the last value in the series
-		   labelFormatter: function(v)
-		   {
-		       return v;
-		   }, // Format the label value to what you want
-		   align: 'center', // can also be 'center', 'left' or 'right'
-		   valign: 'top', // can also be 'middle', 'top' or 'bottom'
-		   useDecimalComma: false,
-		   plotAxis: 'y', // Set to the axis values you wish to plot
-		   hideZero: false,
-		   hideSame: false // Hide consecutive labels of the same value
-	       }
+		   return v;
+	       }, // Format the label value to what you want
+	       align: 'center', // can also be 'center', 'left' or 'right'
+	       valign: 'top', // can also be 'middle', 'top' or 'bottom'
+	       useDecimalComma: false,
+	       plotAxis: 'y', // Set to the axis values you wish to plot
+	       hideZero: false,
+	       hideSame: false // Hide consecutive labels of the same value
 	   }
-       };
+       }
+   };
 
    function init(plot)
    {
@@ -224,12 +224,12 @@
                      }
                      else
                      {
-			 xx = xx + xoffset;
-			 yy = yy + 6 + yoffset;
+			xx = xx + xoffset;
+			yy = yy + 6 + yoffset;
 
-                         var head = '<div style="left:' + xx + 'px;top:' + yy + 'px;" class="valueLabel';
-                         var tail = '">' + val + '</div>';
-                         html += head + "Light" + tail + head + tail;
+                        var head = '<div style="left:' + xx + 'px;top:' + yy + 'px;" class="valueLabel';
+                        var tail = '">' + val + '</div>';
+                        html += head + "Light" + tail + head + tail;
                      }
                   }
                }
