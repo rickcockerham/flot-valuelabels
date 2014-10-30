@@ -138,7 +138,8 @@
                if (categories)
                {
                   x = series.xaxis.categories[x];
-               }               if (x < series.xaxis.min || x > series.xaxis.max || y < series.yaxis.min || y > series.yaxis.max) continue;
+               }
+               if (x < series.xaxis.min || x > series.xaxis.max || y < series.yaxis.min || y > series.yaxis.max) continue;
                var val = (plotAxis === 'x')? x: y;
                if(val == null)
                {
