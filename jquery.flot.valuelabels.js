@@ -145,7 +145,7 @@
                {
                   val = ''
                }
-               if (val === 0 && (hideZero || stackedbar)) continue;  //Zeros on a stacked bar will overlap
+               if (val === 0 && (hideZero || stackedbar)) continue;  //Zeros on a stacked bar will overlap.
                if (series.valueLabels.valueLabelFunc)
                {
                   val = series.valueLabels.valueLabelFunc(
